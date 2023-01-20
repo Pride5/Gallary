@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --dark: #070707;
+  --index: calc(1vw + 1vh);
+  --transition: .96s cubic-bezier( .2, .6, 0, 1)
+}
+@font-face {
+  font-family: raleway_m;
+  src: url(/fonts/raleway-v22-cyrillic-300.woff2);
+  font-weight: 300;
+}
+@font-face {
+  font-family: raleway_m;
+  src: url(/fonts/raleway-v22-cyrillic-900.woff2);
+  font-weight: 900;
+}
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark);
+  color: #fff;
+  font-family: raleway_m, sans-serif;
+  overflow: hidden; 
+  line-height: 1.8;
+}
+.slider {
+  height: 88%;
+  transform: rotate(15deg);
+  overflow: visible;
+  top: 10vh;
+}
+.slider__wrapper{
+  transition: var(--transition)!important;
+  will-change: transform;
+}
+
+.slider__item{
+  max-width: 75vh;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+ 
+.slider__img{
+  width: 300%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  left: -100%;
+  transition: var(--transition)!important;
+  will-change: transform;
+}
+
+.slider_bg{
+  z-index: 0;
+  transform: rotate(-20deg)!important;
+  top: -76vh;
+  left: -20vh;
+  opacity: .25;
+  filter: saturate(70) blur(130px);
+}
+.slider_bg .slider__item {
+  min-height: 100%;
+}
+
+.slider__item.opened{
+  z-index: 2;
+  transform: rotate(-15deg) scale(1.15);
+  box-shadow: rgb( 0 0 0 / .75) 0 0 0 10000px;
+}
+
+.description {
+  position: absolute;
+  font-size: calc(var(--index) * .6);
+  top: 6vh;
+  left: 4vw;
+  max-width: 25vw;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.logo {
+  font-size: calc(var(--index) * 3.6);
+  font-weight: 900;
+  display: inline-block;
+  background: linear-gradient(45deg, DarkMagenta, Tomato, Violet);
+  -webkit-background-clip: text ;
+  -webkit-text-fill-color: transparent;
+}
+
+.description p {
+  opacity: .9;
+  transition: transform var(--transition);
+  transition-duration: 3s;
+}
+
+.description.hidden {
+  opacity: 0;
+  transform: translateY(5vh);
+}
+
+.description.hidden p {
+  transform: translateY(2vh);
+}
+
+/* ЕСЛИ ЗАХОЧУ ДОБАВИТЬ АУДИО .soundbutton {
+  position: fixed;
+  cursor: pointer;
+  width: 50px;
+  top: 10px;
+  left: 10px;
+  transition: .25s ease;
+}
+
+.soundbutton.paused {
+  opacity: 0.25;
+}*/
